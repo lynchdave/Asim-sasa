@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Animations Container -->
+    <div id="background-container">
+        <div class="sunset-sun"></div>
+        
+        <div class="pixel-couple-wrapper">
+            <div class="pixel-shadow"></div>
+            <!-- Boy Silhouette -->
+            <div class="pixel-figure boy-head"></div>
+            <div class="pixel-figure boy-body"></div>
+            <div class="pixel-figure boy-arm-l"></div>
+            <div class="pixel-figure boy-arm-r"></div>
+            <div class="pixel-figure boy-leg-l"></div>
+            <div class="pixel-figure boy-leg-r"></div>
+            
+            <!-- Girl Silhouette -->
+            <div class="pixel-figure girl-hair"></div>
+            <div class="pixel-figure girl-head"></div>
+            <div class="pixel-figure girl-body"></div>
+            <div class="pixel-figure girl-skirt"></div>
+            <div class="pixel-figure girl-arm-l"></div>
+            <div class="pixel-figure girl-arm-r"></div>
+            <div class="pixel-figure girl-leg-l"></div>
+            <div class="pixel-figure girl-leg-r"></div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: OPENING SCREEN -->
+    <div id="opening-screen">
+        <div class="content-wrapper">
+            <h1 class="fade-in">Hi bebi</h1>
+            <p class="fade-in delay-1">I made a little something for you.</p>
+            <button id="open-btn" class="fade-in delay-2">Open this 💌</button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" class="hidden">
+
+        <!-- SECTION 2: HEART INTERACTION -->
+        <section id="heart-section">
+            <div class="heart-container">
+                <div id="main-heart">❤️</div>
+            </div>
+            <p id="heart-instruction">Tap the heart.</p>
+            
+            <div id="heart-hidden-content" class="hidden">
+                <p id="heart-message"></p>
+                <button class="nav-btn" onclick="scrollToSection('cards-section')">There's more &rarr;</button>
+            </div>
+        </section>
+
+        <!-- SECTION 3: INTERACTIVE MESSAGE CARDS -->
+        <section id="cards-section">
+            <h2>A few things I want you to know</h2>
+            <div class="cards-grid" id="cards-grid">
+                <!-- Cards injected via JS -->
+            </div>
+            <div class="nav-container hidden" id="cards-nav">
+                <button class="nav-btn" onclick="scrollToSection('stars-section')">Continue &rarr;</button>
+            </div>
+        </section>
+
+        <!-- SECTION 4: INTERACTIVE STARS -->
+        <section id="stars-section">
+            <h2>Some things are better discovered.</h2>
+            <p class="subtitle">Tap a star to reveal a message.</p>
+            <div class="sky-container" id="interactive-sky">
+                <!-- Stars injected via JS -->
+            </div>
+            
+            <!-- Star Message Modal -->
+            <div id="star-modal" class="modal hidden">
+                <div class="modal-content glass">
+                    <p id="star-modal-text"></p>
+                    <button class="close-btn" onclick="closeStarModal()">✨</button>
+                </div>
+            </div>
+            
+            <div class="nav-container hidden" id="stars-nav">
+                <button class="nav-btn" onclick="scrollToSection('game-section')">Continue &rarr;</button>
+            </div>
+        </section>
+
+        <!-- SECTION 5: MINI MEMORY GAME -->
+        <section id="game-section">
+            <h2>One little challenge</h2>
+            <p>Find the hidden heart.</p>
+            <div id="game-board">
+                <!-- Symbols injected via JS -->
+            </div>
+            
+            <div id="game-success" class="hidden">
+                <h3 class="pop-in">You found it ❤️</h3>
+                <p class="delay-1 fade-in">But there's one more thing...</p>
+                <button class="nav-btn delay-2 fade-in" onclick="scrollToSection('letter-section')">Continue &rarr;</button>
+            </div>
+        </section>
+
+        <!-- SECTION 6: FINAL LETTER -->
+        <section id="letter-section">
+            <h2>Before you go...</h2>
+            <button id="open-letter-btn" class="glow-btn">Open my message 💌</button>
+            
+            <div id="letter-container" class="hidden">
+                <div class="letter glass">
+                    <!-- Pink Wrapped Bouquet -->
+                    <div class="flower-bouquet">
+                        <div class="blooms">
+                            <div class="flower" style="--x:-35px; --y:10px; --s:1.8rem; z-index:1;">🌿</div>
+                            <div class="flower" style="--x:35px; --y:10px; --s:1.8rem; z-index:1;">🌿</div>
+                            <div class="flower" style="--x:-20px; --y:-15px; --s:2.2rem; z-index:2;">🌸</div>
+                            <div class="flower" style="--x:20px; --y:-15px; --s:2.2rem; z-index:2;">🌺</div>
+                            <div class="flower" style="--x:-15px; --y:15px; --s:1.5rem; z-index:4;">🌼</div>
+                            <div class="flower" style="--x:15px; --y:15px; --s:1.5rem; z-index:4;">🌼</div>
+                            <div class="flower" style="--x:0px; --y:-35px; --s:2.8rem; z-index:3;">🌹</div>
+                            <div class="flower" style="--x:0px; --y:5px; --s:2.5rem; z-index:5;">🌹</div>
+                        </div>
+                        <div class="bouquet-wrap"></div>
+                        <div class="bouquet-tie"></div>
+                        <div class="bouquet-base"></div>
+                    </div>
+                    
+                    <p id="letter-text"></p>
+                </div>
+                <div class="nav-container">
+                    <button class="nav-btn" onclick="scrollToSection('surprise-section')">Wait... one last thing.</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: FINAL SURPRISE -->
+        <section id="surprise-section">
+            <button id="surprise-btn" class="glow-btn">One last surprise ✨</button>
+        </section>
+
+    </main>
+
+    <!-- FULL SCREEN SURPRISE OVERLAY -->
+    <div id="final-surprise-overlay" class="hidden">
+        <h1 id="surprise-text" class="pop-in"></h1>
+        <div class="massive-heart pulse">❤️</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,551 @@
+/* ========================================
+   BASE STYLES & TYPOGRAPHY
+======================================== */
+:root {
+    --text-main: #f0f0ff;
+    --accent-glow: rgba(255, 105, 180, 0.6);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(to bottom, 
+        #ff6b4a 0%,    
+        #ff9d4a 30%,   
+        #ffc857 55%,   
+        #7d8f9b 55%,   
+        #4a5a6a 75%,   
+        #2d3540 100%   
+    ) !important;
+    background-attachment: fixed !important;
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    line-height: 1.6;
+}
+
+/* ========================================
+   UTILITIES & GLASSMORPHISM
+======================================== */
+.hidden { display: none !important; }
+
+.glass {
+    background: rgba(0, 0, 0, 0.25) !important; 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.glow-btn {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px transparent;
+    margin-top: 20px;
+}
+.glow-btn:hover {
+    border-color: white;
+    box-shadow: 0 0 20px var(--accent-glow);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: #ffd700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.3s;
+    padding: 10px;
+}
+.nav-btn:hover { transform: translateX(5px); }
+
+.nav-container {
+    text-align: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* ========================================
+   BACKGROUND ANIMATIONS
+======================================== */
+#background-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle infinite ease-in-out;
+}
+
+.bg-heart {
+    position: absolute;
+    font-size: 12px;
+    animation: floatUp infinite linear;
+    opacity: 0.3;
+}
+
+/* ========================================
+   LAYOUT & SECTIONS
+======================================== */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   Section 1: Opening Screen
+======================================== */
+#opening-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #ff6b4a, #2d3540) !important;
+    z-index: 100;
+    transition: opacity 1s ease, transform 1s ease;
+    text-align: center;
+}
+
+#opening-screen .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#opening-screen h1 { 
+    font-size: 2.8rem; 
+    font-weight: 300;
+    margin-bottom: 12px; 
+    color: #f8f8ff;
+    letter-spacing: 0.5px;
+}
+
+#opening-screen p { 
+    font-size: 0.95rem;
+    color: #ffd4b8; 
+    margin-bottom: 40px; 
+    font-weight: 400;
+}
+
+#open-btn {
+    background: transparent;
+    color: #f8f8ff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: none; 
+}
+
+#open-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
+}
+
+/* Section 2: Heart Interaction */
+.heart-container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#main-heart {
+    font-size: 100px;
+    cursor: pointer;
+    user-select: none;
+    animation: beat 2s infinite;
+    transition: transform 0.1s;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5));
+}
+#main-heart:active { transform: scale(0.9); }
+#heart-instruction { margin-top: 20px; font-size: 1.1rem; color: #eee; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+#heart-hidden-content { margin-top: 30px; }
+
+/* Section 3: Cards */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    justify-content: center;
+}
+.flip-card {
+    background: transparent;
+    width: 100%;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.flip-card-front { font-size: 1.2rem; }
+.flip-card-front .icon { font-size: 2.5rem; margin-bottom: 15px; }
+.flip-card-back {
+    transform: rotateY(180deg);
+    font-size: 1.1rem;
+    color: #f0f0ff;
+}
+
+/* Section 4: Interactive Stars */
+.sky-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+.interactive-star {
+    position: absolute;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+    filter: drop-shadow(0 0 5px white);
+}
+.interactive-star:hover {
+    transform: scale(1.5);
+    filter: drop-shadow(0 0 15px yellow);
+}
+.modal {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 300px;
+    z-index: 10;
+}
+.modal-content {
+    padding: 30px 20px;
+    position: relative;
+    text-align: center;
+    font-size: 1rem;
+}
+.close-btn {
+    position: absolute;
+    top: -15px; right: -15px;
+    background: #2d3540;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    cursor: pointer;
+}
+
+/* Section 5: Memory Game */
+#game-board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 400px;
+    margin: 30px 0;
+}
+.game-item {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    user-select: none;
+}
+.game-item:hover { transform: scale(1.2); }
+.shake { animation: shake 0.4s; }
+
+/* Section 6: Letter */
+#letter-container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+}
+.letter {
+    padding: 40px;
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Section 7: Final Surprise */
+#final-surprise-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 10, 26, 0.95);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+#final-surprise-overlay h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    background: -webkit-linear-gradient(#ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.massive-heart {
+    font-size: 120px;
+    filter: drop-shadow(0 0 40px rgba(255, 0, 100, 0.8));
+}
+
+/* ========================================
+   ANIMATIONS & KEYFRAMES
+======================================== */
+.fade-in { opacity: 0; animation: fadeIn 1s forwards; }
+.pop-in { opacity: 0; transform: scale(0.8); animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.delay-1 { animation-delay: 1s; }
+.delay-2 { animation-delay: 2s; }
+
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes popIn { to { opacity: 1; transform: scale(1); } }
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+}
+@keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.3; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+@keyframes pulse {
+    0% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 0, 100, 0.6)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 50px rgba(255, 0, 100, 1)); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 0, 100, 0.6)); }
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-5deg); }
+    75% { transform: translateX(5px) rotate(5deg); }
+}
+@keyframes floatHeartMini {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+}
+
+/* ========================================
+   WRAPPED BOUQUET
+======================================== */
+.flower-bouquet {
+    position: relative;
+    width: 150px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: floatBouquet 3.5s ease-in-out infinite;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+}
+
+.blooms {
+    position: relative;
+    width: 100%;
+    height: 70px; 
+    z-index: 2;
+}
+
+.flower {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    font-size: var(--s);
+    transform: translate(calc(-50% + var(--x)), var(--y));
+    transition: transform 0.3s ease;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.flower:hover {
+    transform: translate(calc(-50% + var(--x)), calc(var(--y) - 5px)) scale(1.2);
+}
+
+.bouquet-wrap {
+    width: 110px;
+    height: 80px;
+    background: linear-gradient(135deg, #ffb6c1, #ff99a8);
+    clip-path: polygon(0 0, 100% 0, 65% 100%, 35% 100%);
+    z-index: 1;
+    margin-top: -10px; 
+}
+
+.bouquet-tie {
+    width: 45px;
+    height: 12px;
+    background: #d6336c; 
+    border-radius: 3px;
+    z-index: 3;
+    margin-top: -2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.bouquet-base {
+    width: 55px;
+    height: 25px;
+    background: linear-gradient(135deg, #ffb6c1, #ff99a8);
+    clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+    margin-top: -2px;
+    border-radius: 0 0 5px 5px;
+}
+
+@keyframes floatBouquet {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+/* ========================================
+   SUNSET & PIXEL COUPLE SCENE
+======================================== */
+.sunset-sun {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #fce16d;
+    border-radius: 50%;
+    top: 55%; 
+    left: 20%;
+    transform: translateY(-50%); 
+    box-shadow: 0 0 40px rgba(252, 225, 109, 0.8);
+    z-index: 1;
+}
+
+.pixel-couple-wrapper {
+    position: absolute;
+    top: 55%; 
+    right: 15%;
+    width: 100px;
+    height: 100px;
+    transform: translateY(-80px) scale(1.3); 
+    z-index: 2;
+}
+
+.pixel-shadow {
+    position: absolute;
+    bottom: -15px;
+    left: -90px;
+    width: 140px;
+    height: 45px;
+    background: #4a5a6a; 
+    transform: skewX(-60deg);
+    z-index: -1;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+}
+
+.pixel-figure {
+    background: #11141a; 
+    position: absolute;
+    border-radius: 0; 
+}
+
+.boy-head { width: 16px; height: 16px; top: 10px; left: 10px; }
+.boy-body { width: 22px; height: 28px; top: 26px; left: 7px; }
+.boy-arm-l { width: 6px; height: 22px; top: 28px; left: 0px; }
+.boy-arm-r { width: 20px; height: 6px; top: 40px; left: 25px; transform: rotate(20deg); }
+.boy-leg-l { width: 8px; height: 24px; top: 54px; left: 9px; }
+.boy-leg-r { width: 8px; height: 24px; top: 54px; left: 20px; }
+
+.girl-hair { width: 22px; height: 32px; top: 12px; left: 44px; border-radius: 2px; }
+.girl-head { width: 16px; height: 16px; top: 14px; left: 47px; }
+.girl-body { width: 18px; height: 20px; top: 30px; left: 46px; }
+.girl-skirt { width: 28px; height: 12px; top: 50px; left: 41px; clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%); }
+.girl-arm-l { width: 18px; height: 6px; top: 45px; left: 32px; transform: rotate(-20deg); } 
+.girl-arm-r { width: 6px; height: 20px; top: 32px; left: 63px; }
+.girl-leg-l { width: 6px; height: 18px; top: 62px; left: 46px; }
+.girl-leg-r { width: 6px; height: 18px; top: 62px; left: 56px; }
+
+/* ========================================
+   RESPONSIVENESS (Mobile Fixed)
+======================================== */
+@media (max-width: 600px) {
+    h2 { font-size: 1.5rem; margin-bottom: 25px; }
+    #opening-screen h1 { font-size: 2.2rem; }
+    
+    /* Make padding smaller to prevent overflow */
+    section { padding: 30px 15px; }
+    
+    .letter { padding: 25px 15px; font-size: 0.95rem; }
+    .cards-grid { grid-template-columns: 1fr; gap: 15px; }
+    .flip-card { height: 160px; }
+    
+    #main-heart { font-size: 80px; }
+    .massive-heart { font-size: 80px; }
+    #final-surprise-overlay h1 { font-size: 1.8rem; padding: 0 10px; }
+    
+    /* Fixed couple and sun positioning so they don't break the layout */
+    .pixel-couple-wrapper { 
+        transform: translateY(-60px) scale(0.85); 
+        right: 5%; 
+    }
+    .sunset-sun { 
+        width: 70px; 
+        height: 70px; 
+        left: 10%;
+    }
+    
+    .sky-container { height: 250px; }
+}
