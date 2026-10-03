@@ -129,7 +129,7 @@ function flipCard(element) {
 }
 
 // ========================================
-// SECTION 4: INTERACTIVE STARS
+// SECTION 4: INTERACTIVE BUTTERFLIES
 // ========================================
 const skyContainer = document.getElementById('interactive-sky');
 const starModal = document.getElementById('star-modal');
@@ -139,7 +139,7 @@ let starsDiscovered = 0;
 messages.stars.forEach((msg) => {
     const star = document.createElement('div');
     star.className = 'interactive-star';
-    star.textContent = '✨';
+    star.textContent = '🦋'; // Changed to butterfly
     const top = Math.floor(Math.random() * 80) + 10;
     const left = Math.floor(Math.random() * 80) + 10;
     star.style.top = `${top}%`;
@@ -153,7 +153,7 @@ messages.stars.forEach((msg) => {
         
         if (!star.dataset.clicked) {
             star.dataset.clicked = 'true';
-            star.style.filter = 'drop-shadow(0 0 15px #ffd700)';
+            star.style.filter = 'drop-shadow(0 0 15px #ffb6c1)'; // Soft pink glow
             starsDiscovered++;
             
             if (starsDiscovered === messages.stars.length) {
