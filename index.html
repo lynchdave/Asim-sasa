@@ -70,21 +70,26 @@
             </div>
         </section>
 
-        <!-- SECTION 4: INTERACTIVE STARS -->
+        <!-- SECTION 4: INTERACTIVE BUTTERFLIES -->
         <section id="stars-section">
             <h2>Some things are better discovered.</h2>
-            <p class="subtitle">Tap a star to reveal a message.</p>
+            <p class="subtitle">Tap a butterfly to reveal a message.</p>
             <div class="sky-container" id="interactive-sky">
-                <!-- Stars injected via JS -->
+                <!-- Butterflies injected via JS -->
             </div>
             
-            <!-- Star Message Modal -->
+            <!-- Butterfly Message Modal -->
             <div id="star-modal" class="modal hidden">
                 <div class="modal-content glass">
                     <p id="star-modal-text"></p>
-                    <button class="close-btn" onclick="closeStarModal()">✨</button>
+                    <button class="close-btn" onclick="closeStarModal()">✖️</button>
                 </div>
             </div>
+            
+            <div class="nav-container hidden" id="stars-nav">
+                <button class="nav-btn" onclick="scrollToSection('game-section')">Continue &rarr;</button>
+            </div>
+        </section>
             
             <div class="nav-container hidden" id="stars-nav">
                 <button class="nav-btn" onclick="scrollToSection('game-section')">Continue &rarr;</button>
